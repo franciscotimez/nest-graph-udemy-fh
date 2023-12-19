@@ -13,7 +13,13 @@ export class TodoService {
   ];
 
   create(createTodoDto: CreateTodoDto) {
-    return 'This action adds a new todo';
+    const todo = new Todo();
+    todo.id = Math.max(...this.todos.map(todo => todo.id, 0)) + 1;
+    todo.description = createTodoDto.description;
+    todo.done = false;
+
+    this.todos.push(todo);
+    return todo;
   }
 
   findAll(): Todo[] {
@@ -26,11 +32,27 @@ export class TodoService {
     return todo;
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return `This action updates a #${id} todo`;
+  update(id: number, updateTodoDto: UpdateTodoDto): Todo {
+
+    const { done, description } = updateTodoDto;
+    const todo = this.findOne(id);
+
+    if (done !== undefined) todo.done = done;
+    if (description) todo.description = description;
+
+    this.todos = this.todos.map(dbTodo => {
+      if (dbTodo.id === id) return todo;
+      return dbTodo;
+    });
+
+    return todo;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} todo`;
+    this.findOne(id);
+
+    this.todos = this.todos.filter(todo => todo.id !== id);
+
+    return `ToDo #${id} has been deleted`;
   }
 }
