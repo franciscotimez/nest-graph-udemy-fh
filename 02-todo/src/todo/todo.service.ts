@@ -33,7 +33,6 @@ export class TodoService {
   }
 
   update(updateTodoDto: UpdateTodoInput): Todo {
-
     const { id, done, description } = updateTodoDto;
     const todo = this.findOne(id);
 
@@ -48,11 +47,11 @@ export class TodoService {
     return todo;
   }
 
-  // remove(id: number) {
-  //   this.findOne(id);
+  remove(id: number) {
+    this.findOne(id);
 
-  //   this.todos = this.todos.filter(todo => todo.id !== id);
+    this.todos = this.todos.filter(todo => todo.id !== id);
 
-  //   return `ToDo #${id} has been deleted`;
-  // }
+    return true;
+  }
 }

@@ -43,7 +43,10 @@ export class TodoResolver {
     return this.todoService.update(updateTodoInput);
   }
 
-  deleteTodo() {
-    return [];
+  @Mutation(() => Boolean, {
+    name: "removeTodo"
+  })
+  removeTodo(@Args("id", { type: () => Int }) id: number) {
+    return this.todoService.remove(id);
   }
 }
