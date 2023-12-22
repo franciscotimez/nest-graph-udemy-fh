@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Todo {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
 type Query {
   """Retorna Hola mundo"""
   hello: String!
@@ -11,4 +17,5 @@ type Query {
 
   """Retorna un numero entero aleatorio desde cero."""
   randomFromZeroTo(to: Int = 10): Int!
+  todos: [Todo!]!
 }
