@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Todo } from './entities/todo.entity';
+import { CreateTodoInput } from './dto/inputs/create-todo.dto';
 
 @Injectable()
 export class TodoService {
@@ -10,15 +11,15 @@ export class TodoService {
     { id: 3, description: "Piedra del Espacio", done: false }
   ];
 
-  // create(createTodoDto: CreateTodoDto) {
-  //   const todo = new Todo();
-  //   todo.id = Math.max(...this.todos.map(todo => todo.id, 0)) + 1;
-  //   todo.description = createTodoDto.description;
-  //   todo.done = false;
+  create(createTodoDto: CreateTodoInput) {
+    const todo = new Todo();
+    todo.id = Math.max(...this.todos.map(todo => todo.id, 0)) + 1;
+    todo.description = createTodoDto.description;
+    todo.done = false;
 
-  //   this.todos.push(todo);
-  //   return todo;
-  // }
+    this.todos.push(todo);
+    return todo;
+  }
 
   findAll(): Todo[] {
     return this.todos;
