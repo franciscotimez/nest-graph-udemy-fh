@@ -13,6 +13,18 @@ export class TodoService {
     { id: 3, description: "Piedra del Espacio", done: false }
   ];
 
+  get totalTodos() {
+    return this.todos.length;
+  }
+
+  get completedTodos() {
+    return this.todos.filter(todo => todo.done === true).length;
+  }
+
+  get pendingTodos() {
+    return this.todos.filter(todo => todo.done === false).length;
+  }
+
   create(createTodoDto: CreateTodoInput) {
     const todo = new Todo();
     todo.id = Math.max(...this.todos.map(todo => todo.id, 0)) + 1;
