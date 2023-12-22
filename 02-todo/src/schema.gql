@@ -18,4 +18,5 @@ type Query {
   """Retorna un numero entero aleatorio desde cero."""
   randomFromZeroTo(to: Int = 10): Int!
   todos: [Todo!]!
+  todo(id: Int!): Todo!
 }
