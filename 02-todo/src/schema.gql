@@ -3,5 +3,12 @@
 # ------------------------------------------------------
 
 type Query {
-  helloWorld: String!
+  """Retorna Hola mundo"""
+  hello: String!
+
+  """Retorna un numero aleatorio"""
+  randomNumber: Float!
+
+  """Retorna un numero entero aleatorio desde cero."""
+  randomFromZeroTo(to: Int = 10): Int!
 }
