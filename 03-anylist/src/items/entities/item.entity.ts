@@ -18,8 +18,8 @@ export class Item {
   @Column()
   quantity: number;
 
-  @Field(() => String, { description: 'Example field (placeholder)' })
-  @Column()
-  quantityUnits: string;
+  @Field(() => String, { description: 'Example field (placeholder)', nullable: true })
+  @Column({ nullable: true })
+  quantityUnits?: string;
 
 }
