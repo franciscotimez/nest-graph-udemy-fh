@@ -4,7 +4,16 @@
 
 type Item {
   """Example field (placeholder)"""
-  exampleField: Int!
+  id: ID!
+
+  """Example field (placeholder)"""
+  name: String!
+
+  """Example field (placeholder)"""
+  quantity: Float!
+
+  """Example field (placeholder)"""
+  quantityUnits: String!
 }
 
 type Query {
