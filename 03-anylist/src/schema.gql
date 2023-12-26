@@ -47,5 +47,5 @@ input UpdateItemInput {
 
   """Example field (placeholder)"""
   quantityUnits: String
-  id: Int!
+  id: ID!
 }
